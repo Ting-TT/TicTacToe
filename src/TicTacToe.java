@@ -1,6 +1,6 @@
 import java.util.*;
 
-// CPU randomly select a place to put its piece, can be improved by applying algorithms
+// TODO: CPU randomly select a place to put its piece, can be improved by applying some algorithms.
 public class TicTacToe {
     static List<Integer> userPositions = new ArrayList<>();
     static List<Integer> cpuPositions = new ArrayList<>();
@@ -19,7 +19,7 @@ public class TicTacToe {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Please enter the position you want to put your piece (1-9):");
             int userPosition = scanner.nextInt();
-            // avoid user choose a position out of index or a taken position
+            // Avoid user choose a position out of index or a taken position.
             while (userPosition < 1 || userPosition > 9 || userPositions.contains(userPosition) || cpuPositions.contains(userPosition)) {
                 if (userPosition < 1 || userPosition > 9) {
                     System.out.println("Wrong position number! You can only enter a position number between 1 to 9. Please reenter:");
@@ -37,7 +37,7 @@ public class TicTacToe {
 
             Random random = new Random();
             int cpuPosition = random.nextInt(9) + 1;
-            // avoid cpu choose a taken position
+            // Avoid cpu choose a taken position.
             while (userPositions.contains(cpuPosition) || cpuPositions.contains(cpuPosition)) {
                 cpuPosition = random.nextInt(9) + 1;
             }
@@ -49,7 +49,6 @@ public class TicTacToe {
                 break;
             }
         }
-
     }
 
     private static void printGameBoard(char[][] board) {
@@ -133,9 +132,7 @@ public class TicTacToe {
                 return "Sorry... You lose the game :(";
             }
         }
-        if (userPositions.size() + cpuPositions.size() == 9) return "CAT!"; // a tie game
-
-        return "";
+        if (userPositions.size() + cpuPositions.size() == 9) return "CAT!"; // A tie game.
+        return ""; // Game hasn't finished yet.
     }
-
 }
